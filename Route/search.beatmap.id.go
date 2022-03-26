@@ -24,7 +24,7 @@ func SearchByBeatmapId(c echo.Context) (err error) {
 		}))
 	}
 	fmt.Println(sq.MapId)
-	row := db.Maria.QueryRow("select beatmap_id, beatmapset_id, mode, mode_int, status, ranked, total_length, max_combo, difficulty_rating, version, accuracy, ar, cs, drain, bpm, `convert`, count_circles, count_sliders, count_spinners, deleted_at, hit_length, is_scoreable, last_updated, passcount, playcount, checksum, user_id from osu.beatmap where beatmap_id = ?;", sq.MapId)
+	row := db.Maria1.QueryRow("select beatmap_id, beatmapset_id, mode, mode_int, status, ranked, total_length, max_combo, difficulty_rating, version, accuracy, ar, cs, drain, bpm, `convert`, count_circles, count_sliders, count_spinners, deleted_at, hit_length, is_scoreable, last_updated, passcount, playcount, checksum, user_id from osu.beatmap where beatmap_id = ?;", sq.MapId)
 	var Map osu.BeatmapOUT
 	err = row.Scan(
 		//beatmap_id, beatmapset_id, mode, mode_int, status, ranked, total_length, max_combo, difficulty_rating,

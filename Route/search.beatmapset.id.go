@@ -24,7 +24,7 @@ func SearchByBeatmapSetId(c echo.Context) (err error) {
 			Message:   "request parse error",
 		}))
 	}
-	row := db.Maria.QueryRow(`select 
+	row := db.Maria1.QueryRow(`select 
        beatmapset_id, artist, artist_unicode, creator, favourite_count, 
        hype_current, hype_required, nsfw, play_count, source, status, 
        title, title_unicode, user_id, video, availability_download_disabled, 
@@ -76,7 +76,7 @@ func SearchByBeatmapSetId(c echo.Context) (err error) {
 		}))
 	}
 
-	rows, err := db.Maria.Query(fmt.Sprintf(
+	rows, err := db.Maria1.Query(fmt.Sprintf(
 		"select beatmap_id, beatmapset_id, mode, mode_int, status, ranked, total_length, max_combo, difficulty_rating, version, accuracy, ar, cs, drain, bpm, `convert`, count_circles, "+
 			"count_sliders, count_spinners, deleted_at, hit_length, is_scoreable, last_updated, passcount, playcount, checksum, "+
 			"user_id from osu.beatmap where beatmapset_id in( %s ) order by difficulty_rating;", strings.Trim(strings.Join(strings.Fields(fmt.Sprint(mapids)), ", "), "[]")))

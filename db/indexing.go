@@ -49,7 +49,7 @@ func doIndex() {
 	st := time.Now().UnixMilli()
 
 	//select beatmap_id, beatmapset_id from osu.beatmap;
-	rows, err := Maria.Query(`select beatmap_id, beatmapset_id from osu.beatmap;`)
+	rows, err := Maria1.Query(`select beatmap_id, beatmapset_id from osu.beatmap;`)
 	if err != nil {
 		pterm.Error.Println(err)
 		return
@@ -67,7 +67,7 @@ func doIndex() {
 		mutex.Unlock()
 	}
 
-	rows, err = Maria.Query(`select beatmapset_id, artist, creator, title, tags from osu.beatmapset`)
+	rows, err = Maria1.Query(`select beatmapset_id, artist, creator, title, tags from osu.beatmapset`)
 	if err != nil {
 		pterm.Error.Println(err)
 		return

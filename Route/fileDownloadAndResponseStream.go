@@ -40,7 +40,7 @@ func DownloadBeatmapSet(c echo.Context) (err error) {
 
 	go banchoCroller.ManualUpdateBeatmapSet(mid)
 
-	row := db.Maria.QueryRow(`SELECT beatmapset_id,artist,title,last_updated,video FROM osu.beatmapset WHERE beatmapset_id = ?`, mid)
+	row := db.Maria1.QueryRow(`SELECT beatmapset_id,artist,title,last_updated,video FROM osu.beatmapset WHERE beatmapset_id = ?`, mid)
 	err = row.Err()
 	if err != nil {
 		if err == sql.ErrNoRows {

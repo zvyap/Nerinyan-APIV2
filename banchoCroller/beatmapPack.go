@@ -37,7 +37,7 @@ func UpdateAllPackList() {
 		var dbPackId string
 		page := 0
 
-		row := db.Maria.QueryRow(`SELECT PACK_ID FROM osu.BEATMAP_PACK WHERE TYPE = ? ORDER BY PACK_ID DESC LIMIT 1`, packType[i])
+		row := db.Maria1.QueryRow(`SELECT PACK_ID FROM osu.BEATMAP_PACK WHERE TYPE = ? ORDER BY PACK_ID DESC LIMIT 1`, packType[i])
 		if err := row.Err(); err != nil {
 			if err != sql.ErrNoRows {
 				log.Println(err)
@@ -100,7 +100,7 @@ func upsertPack(packType string, packId, packName, packCreator, packDate []strin
 	}
 
 	for j := 0; j < sizePackId; j++ {
-		_, err := db.Maria.Exec(fmt.Sprintf(upsertPackSql, buildSqlValues(upsertPackSqlRows, sizePackId)), buf...)
+		_, err := db.Maria1.Exec(fmt.Sprintf(upsertPackSql, buildSqlValues(upsertPackSqlRows, sizePackId)), buf...)
 		if err != nil {
 			log.Println(err)
 			pterm.Error.Println(err)

@@ -426,7 +426,7 @@ func Search(c echo.Context) (err error) {
 	}()
 	//return c.JSON(http.StatusOK, "")
 
-	rows, err := db.Maria.Query(q)
+	rows, err := db.Maria1.Query(q)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			return c.JSON(http.StatusNotFound, logger.Error(c, &bodyStruct.ErrorStruct{
@@ -506,7 +506,7 @@ func Search(c echo.Context) (err error) {
 
 	}
 
-	rows, err = db.Maria.Query(fmt.Sprintf("select beatmap_id, beatmapset_id, mode, mode_int, status, ranked, total_length, max_combo, difficulty_rating, version, accuracy, ar, cs, drain, bpm, "+
+	rows, err = db.Maria1.Query(fmt.Sprintf("select beatmap_id, beatmapset_id, mode, mode_int, status, ranked, total_length, max_combo, difficulty_rating, version, accuracy, ar, cs, drain, bpm, "+
 		"`convert`, "+
 		"count_circles, count_sliders, count_spinners, deleted_at, hit_length, is_scoreable, last_updated, passcount, playcount, checksum, "+
 		"user_id from osu.beatmap where beatmapset_id in( %s ) order by difficulty_rating;", strings.Trim(strings.Join(strings.Fields(fmt.Sprint(mapids)), ", "), "[]")))
