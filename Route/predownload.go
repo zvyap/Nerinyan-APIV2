@@ -109,7 +109,7 @@ func Predownload(c echo.Context) (err error) {
 	serverFileName := fmt.Sprintf("%s/%d.osz", config.Config.TargetDir, mid)
 
 	if src.FileList[mid].Unix() >= lu.Unix() { // 맵이 최신인경우
-		return c.Response().NoContent(http.StatusOK)
+		return c.NoContent(http.StatusOK)
 	}
 
 	//==========================================
