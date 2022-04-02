@@ -15,7 +15,6 @@ import (
 	"github.com/pterm/pterm"
 	"io"
 	"net/http"
-	"os"
 	"strconv"
 	"time"
 )
