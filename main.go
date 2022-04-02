@@ -89,6 +89,7 @@ func main() {
 	// 맵 파일 다운로드 ===================================================================================================
 	e.GET("/d/:id", Route.DownloadBeatmapSet, middleWareFunc.BanchoBeatmapDownloadLimiter)
 	e.GET("/b/:id", Route.DownloadBeatmapSet, middleWareFunc.BanchoBeatmapDownloadLimiter)
+	e.GET("/d/:id", Route.Predownload, middleWareFunc.BanchoBeatmapDownloadLimiter)
 	//TODO 맵아이디, 맵셋아이디 지원
 	//e.GET("/d/:id", Route.DownloadBeatmapSet, middleWareFunc.LoadBalancer)
 
